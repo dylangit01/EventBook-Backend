@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 });
 
 // Connect data with real database by using mongoDB
-// const CONNECTION_URL = 'mongodb+srv://dylan01:dylan01@cluster0.rk0ev.mongodb.net/<dbname>?retryWrites=true&w=majority';
+// const CONNECTION_URL = 'mongodb+srv://dylan01:<password>@cluster0.rk0ev.mongodb.net/<dbname>?retryWrites=true&w=majority';
 
 mongoose.connect(process.env.CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
