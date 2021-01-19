@@ -3,6 +3,7 @@ import express from 'express';
 import {getPosts, createPost, updatePost, deletePost, likePost } from "../controllers/posts.js";
 // Don't forget the extension name ".js" as ESM has to have it
 
+import authMiddleware from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 /*
@@ -13,12 +14,12 @@ router.get('/', getPosts);
 
 // router.get('/:id', getPost);
 
-router.post('/', createPost);
+router.post('/', authMiddleware, createPost);
 
-router.patch('/:id', updatePost);
+router.patch('/:id', authMiddleware, updatePost);
 
-router.delete('/:id', deletePost);
+router.delete('/:id', authMiddleware, deletePost);
 
-router.patch('/:id/likePost', likePost);
+router.patch('/:id/likePost', authMiddleware, likePost);
 
 export default router;

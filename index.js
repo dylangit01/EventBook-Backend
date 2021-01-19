@@ -1,11 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import postRoutes from './routes/posts.js';
+import userRoutes from './routes/users.js';
 
 const app = express();
 dotenv.config();
+
 const PORT = process.env.PORT || 5000;
 
 // Taking incoming requests and set limits by using express body-parser.
@@ -21,6 +23,8 @@ c. Body-parser must be placed before routes, so that body-parser can be applied,
 app.use(cors());  // cors has to be placed before routes and add "proxy" :"http://localhost:5000" in Client Side package.json file
 
 app.use('/posts', postRoutes);
+// console.log(process.env.CONNECTION_URL);
+app.use('/users', userRoutes);
 
 app.get('/', (req, res) => {
   res.send('Event-Book API is running successfully')
