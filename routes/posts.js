@@ -12,14 +12,12 @@ In posts router folder, we are not putting any logic here, which will mess up wh
 */
 router.get('/', getPosts);
 
-// router.get('/:id', getPost);
-
 router.post('/', authMiddleware, createPost);
 
 router.patch('/:id', authMiddleware, updatePost);
 
 router.delete('/:id', authMiddleware, deletePost);
 
-router.patch('/:id/likePost', authMiddleware, likePost);
+router.patch('/:id/likepost', authMiddleware, likePost);
 
 export default router;
